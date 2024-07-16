@@ -7,9 +7,9 @@ const Navbar = () => {
     <nav className="bg-white p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="mx-32 my-6">
-          <a href="#" alt="logo">
+          <button href="#">
             <img className="h-11 w-40" src={logo} alt="logo" />
-          </a>
+          </button>
         </div>
         <div className="flex items-center px-48">
           <input
