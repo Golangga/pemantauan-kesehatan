@@ -8,6 +8,8 @@ import "./Home.css";
 import Weather from "./Weather";
 import Clock from "./Clock";
 import PemulihanLingkungan from "./PemulihanLingkungan";
+import CurrentWeather from "./CurrentWeather";
+import AirPollution from "./kualitasUdara";
 
 function Home() {
   const [activeTab, setActiveTab] = useState("beranda");
@@ -81,7 +83,12 @@ function Home() {
             <Map />
           </div>
         )}
-        {activeTab === "kualitasUdara" && <div>Data Kualitas Udara</div>}
+        {activeTab === "kualitasUdara" && (
+          <div>
+            <CurrentWeather />
+            <AirPollution />
+          </div>
+        )}
         {activeTab === "pusatInformasi" && <div>Artikel dan Informasi</div>}
         {activeTab === "pemulihanLingkungan" && (
           <div>
