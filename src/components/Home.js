@@ -7,6 +7,7 @@ import Map from "./Maps";
 import "./Home.css";
 import Weather from "./Weather";
 import Clock from "./Clock";
+import PemulihanLingkungan from "./PemulihanLingkungan";
 
 function Home() {
   const [activeTab, setActiveTab] = useState("beranda");
@@ -70,20 +71,23 @@ function Home() {
       </aside>
 
       {/* Konten Utama */}
-      <div className="flex-grow rounded-3xl bg-warnabiru h-auto mr-48 content-box">
+      <div className="flex-grow rounded-3xl bg-warnabiru h-auto mr-48 content-box p-4">
         {activeTab === "beranda" && (
           <div>
             <p className="font-medium p-2">
               <Clock />
             </p>
-
             <Weather />
             <Map />
           </div>
         )}
         {activeTab === "kualitasUdara" && <div>Data Kualitas Udara</div>}
         {activeTab === "pusatInformasi" && <div>Artikel dan Informasi</div>}
-        {activeTab === "pemulihanLingkungan" && <div>Program Pemulihan</div>}
+        {activeTab === "pemulihanLingkungan" && (
+          <div>
+            <PemulihanLingkungan />
+          </div>
+        )}
       </div>
     </div>
   );
