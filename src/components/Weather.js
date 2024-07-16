@@ -36,7 +36,7 @@ const Weather = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  const hourlyWeather = weather.list.slice(0, 5);
+  const hourlyWeather = weather.list.slice(0, 4);
 
   const weatherIcons = {
     Clouds: cerah,
@@ -58,7 +58,7 @@ const Weather = () => {
           });
 
           return (
-            <div key={index} className="m-10">
+            <div key={index} className="h-full">
               <div className="p-12 rounded-xl border-sky-400 border-2 ml-11 mt-3 items-center">
                 <div className="">
                   <h2 className="">{weather.city.name}</h2>
