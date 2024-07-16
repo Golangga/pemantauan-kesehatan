@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 const Map = () => {
-  const position = [-6.2088, 106.8456]; // Koordinat untuk Jakarta
+  const position = [-6.9904, 110.4229]; // Koordinat Semarang
 
   return (
     <MapContainer
@@ -16,7 +16,7 @@ const Map = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
       <Marker position={position}>
-        <Popup>Jakarta, Indonesia</Popup>
+        <Popup>Semarang, Indonesia</Popup>
       </Marker>
     </MapContainer>
   );

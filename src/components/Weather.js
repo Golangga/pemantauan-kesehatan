@@ -64,27 +64,32 @@ const Weather = () => {
           });
 
           return (
-            <div key={index} className="w-full md:w-1/2 lg:w-1/4 p-4">
-              <div className="p-4 rounded-xl border-sky-400 border-2 items-center">
-                <div className="">
-                  <h2 className="text-center">{weather.city.name}</h2>
-                  <p className="font-extralight text-center">
-                    Perkiraan cuaca pada {formattedDate}
-                  </p>
-                </div>
-                <p className="font-extralight text-center">{formattedTime}</p>
-                <p className="humidity text-center">{hour.main.humidity} %</p>
-                <div className="flex justify-center">
-                  <img
-                    src={weatherIcons[hour.weather[0].main]}
-                    alt={hour.weather[0].main}
-                    className="weather-icon"
-                  />
-                </div>
-                <p className="font-medium text-xl text-center">
-                  {hour.main.temp}°C
-                </p>
+            <div
+              key={index}
+              className="p-4 bg-white rounded-xl shadow-md mx-5 mb-5"
+            >
+              <h2 className="text-center font-bold text-lg">
+                {weather.city.name}
+              </h2>
+              <p className="text-center text-sm text-gray-500 mb-2">
+                Perkiraan cuaca pada {formattedDate}
+              </p>
+              <p className="text-center text-sm text-gray-500 mb-2">
+                {formattedTime}
+              </p>
+              <p className="text-center text-sm text-gray-500 mb-2">
+                Humidity: {hour.main.humidity} %
+              </p>
+              <div className="flex justify-center mb-4">
+                <img
+                  src={weatherIcons[hour.weather[0].main]}
+                  alt={hour.weather[0].main}
+                  className="w-16 h-16"
+                />
               </div>
+              <p className="text-center font-bold text-xl">
+                {hour.main.temp}°C
+              </p>
             </div>
           );
         })}

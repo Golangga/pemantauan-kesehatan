@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
-import blue from "../assets/vid/blue.mp4";
-import yellow from "../assets/vid/yellow.mp4";
-//import green from "../assets/vid/green.mp4";
+import blueVideo from "../assets/vid/blue.mp4";
+import yellowVideo from "../assets/vid/yellow.mp4";
 
 const AirPollution = () => {
   const [pollution, setPollution] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Replace with your aqicn API key
-  const API_KEY = "YOUR_AQICN_API_KEY";
-
-  // Replace with your latitude and longitude (Semarang example)
+  const API_KEY = "28b7d4bb96c484fc420b811fb8c7667c09003e75";
   const latitude = -6.992778;
   const longitude = 110.417496;
 
@@ -36,44 +32,44 @@ const AirPollution = () => {
     fetchPollution();
   }, [API_KEY, latitude, longitude]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (loading) return <div className="text-center mt-8">Loading...</div>;
+  if (error)
+    return <div className="text-center mt-8">Error: {error.message}</div>;
 
-  // Data access might differ depending on aqicn API response structure
-  // Refer to their documentation for details
-  const currentPollution = pollution.data || {}; // Handle potential missing data
+  const currentPollution = pollution.data || {};
 
   return (
-    <div className="bg-white h-auto flex justify-center">
-      <div className="font-bold flex-row">
-        <h2>Air Pollution</h2>
-      </div>
-      <div className="font-normal">
-        <p>
-          PM10:{" "}
-          <video
-            autoPlay
-            loop
-            muted
-            className="w-full h-full object-cover rounded-full"
-          >
-            <source src={blue} type="video/mp4" />
-          </video>
-          {currentPollution.pm10} µg/m³
-        </p>
-
-        <p>
-          PM2.5:{" "}
-          <video
-            autoPlay
-            loop
-            muted
-            className="w-full h-full object-cover rounded-full"
-          >
-            <source src={yellow} type="video/mp4" />
-          </video>
-          {currentPollution.pm25} µg/m³
-        </p>
+    <div className="bg-warnabiru py-8">
+      <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+        <h2 className="text-2xl font-bold mb-4 text-center">Air Quality</h2>
+        <div className="flex justify-center items-center gap-4 mt-4">
+          <div className="flex flex-col items-center">
+            <video
+              autoPlay
+              loop
+              muted
+              className="w-24 h-24 rounded-full object-cover"
+            >
+              <source src={blueVideo} type="video/mp4" />
+            </video>
+            <p className="mt-2 text-center">
+              PM10: {currentPollution.pm10 ? currentPollution.pm10.v : "-"}
+            </p>
+          </div>
+          <div className="flex flex-col items-center">
+            <video
+              autoPlay
+              loop
+              muted
+              className="w-24 h-24 rounded-full object-cover"
+            >
+              <source src={yellowVideo} type="video/mp4" />
+            </video>
+            <p className="mt-2 text-center">
+              PM2.5: {currentPollution.pm25 ? currentPollution.pm25.v : "-"}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
