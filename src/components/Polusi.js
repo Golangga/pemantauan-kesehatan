@@ -6,8 +6,7 @@ const Pollution = () => {
   const [error, setError] = useState(null);
 
   const API_KEY = "28b7d4bb96c484fc420b811fb8c7667c09003e75";
-  const city = "Semarang"; // Sesuaikan dengan nama kota yang diinginkan
-
+  const city = "Semarang"; 
   useEffect(() => {
     const fetchPollution = async () => {
       try {

@@ -22,8 +22,7 @@ function Home() {
 
   return (
     <div className="flex h-full">
-      {/* Sidebar */}
-      <aside className="bg-white h-full">
+      <aside className="bg-white h-full max-w-3xl">
         <div className="flex flex-col items-center ml-24">
           <nav className="flex flex-col w-56">
             <div className="flex flex-col my-24">
@@ -74,8 +73,7 @@ function Home() {
         </div>
       </aside>
 
-      {/* Konten Utama */}
-      <div className="flex-grow rounded-3xl bg-warnabiru h-auto mr-48 content-box p-4">
+      <div className="flex-grow rounded-3xl bg-warnabiru h-auto mr-48 content-box p-4 max-w-7xl mx-auto">
         {activeTab === "beranda" && (
           <div>
             <p className="font-medium p-2">
