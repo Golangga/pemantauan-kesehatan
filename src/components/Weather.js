@@ -47,10 +47,16 @@ const Weather = () => {
   };
 
   return (
-    <div className="weather-container flex">
-      <div className="flex flex-row w-36 h-46">
+    <div className="weather-container flex flex-wrap justify-center">
+      <div className="flex flex-row flex-wrap justify-center w-full">
         {hourlyWeather.map((hour, index) => {
           const dateObject = new Date(hour.dt * 1000);
+
+          const formattedDate = dateObject.toLocaleDateString("id-ID", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+          });
 
           const formattedTime = dateObject.toLocaleTimeString([], {
             hour: "2-digit",
@@ -58,19 +64,26 @@ const Weather = () => {
           });
 
           return (
-            <div key={index} className="h-full">
-              <div className="p-12 rounded-xl border-sky-400 border-2 ml-11 mt-3 items-center">
+            <div key={index} className="w-full md:w-1/2 lg:w-1/4 p-4">
+              <div className="p-4 rounded-xl border-sky-400 border-2 items-center">
                 <div className="">
-                  <h2 className="">{weather.city.name}</h2>
+                  <h2 className="text-center">{weather.city.name}</h2>
+                  <p className="font-extralight text-center">
+                    Perkiraan cuaca pada {formattedDate}
+                  </p>
                 </div>
-                <p className="font-extralight">{formattedTime}</p>
-                <p className="humidity">{hour.main.humidity} %</p>
-                <img
-                  src={weatherIcons[hour.weather[0].main]}
-                  alt={hour.weather[0].main}
-                  className="weather-icon"
-                />
-                <p className="font-medium text-xl">{hour.main.temp}°C</p>
+                <p className="font-extralight text-center">{formattedTime}</p>
+                <p className="humidity text-center">{hour.main.humidity} %</p>
+                <div className="flex justify-center">
+                  <img
+                    src={weatherIcons[hour.weather[0].main]}
+                    alt={hour.weather[0].main}
+                    className="weather-icon"
+                  />
+                </div>
+                <p className="font-medium text-xl text-center">
+                  {hour.main.temp}°C
+                </p>
               </div>
             </div>
           );
